@@ -254,8 +254,9 @@ window.customCards = window.customCards || [];
 window.customCards.push({
   type: "berlin-transport-card",
   name: "BVG/VBB departures card",
-  preview: true,
+  preview: false,
   description: "Card for BVG/VBB real-time departures integration",
   documentationURL:
     "https://github.com/manoth-msft/home-assistant-dashboard-card-bvg-vbb-departures",
+
 });
