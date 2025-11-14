@@ -253,9 +253,9 @@ customElements.define('berlin-transport-card-editor', BerlinTransportCardEditor)
 window.customCards = window.customCards || [];
 window.customCards.push({
   type: "berlin-transport-card",
-  name: "Berlin Transport Card",
+  name: "BVG/VBB departures card",
   preview: false,
-  description: "Card for Berlin (BVG) and Brandenburg (VBB) transport integration",
+  description: "Card for BVG/VBB real-time departures integration",
   documentationURL:
-    "https://github.com/vas3k/lovelace-berlin-transport-card",
+    "https://github.com/manoth-msft/home-assistant-dashboard-card-bvg-vbb-departures",
 });

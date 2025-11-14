@@ -1,8 +1,8 @@
-# Lovelace card for Berlin (BVG) and Brandenburg (VBB) transport integration
+# Home Assistant dashboard card for BVG/VBB real-time departures integration
 
 Custom lovelace card that displays upcoming departures from your defined public transport stops for Berlin and Brandenburg.
 
-**The integration itself can be found here: https://github.com/vas3k/home-assistant-berlin-transport**
+**The integration itself can be found here: https://github.com/manoth-msft/home-assistant-bvg-vbb-departures**
 
 This card works only after you installed and configured the integration.
 
@@ -10,21 +10,23 @@ This card works only after you installed and configured the integration.
 
 > I use [iOS Dark Mode Theme](https://github.com/basnijholt/lovelace-ios-dark-mode-theme) by @basnijholt, installed from [HACS](https://hacs.xyz/)
 
+> 🛠️ This project is a fork of the original Berlin Transport card by [vas3k](https://github.com/vas3k/lovelace-berlin-transport-card) — with enhanced filtering, customization options, and independent maintenance.
+
 ## 💿 Installation
 
 This Lovelace card can be installed via [HACS](https://hacs.xyz/) or manually.
 
-> ⚠️ Make sure you installed the [BVG integration](https://github.com/vas3k/home-assistant-berlin-transport) first. This card would not work without it.
+> ⚠️ Make sure you installed the [BVG/VBB Departures integration](https://github.com/manoth-msft/home-assistant-bvg-vbb-departures) first. This card would not work without it.
 
 ### Using HACS
 
 **1.** Open HACS interface from your Home Assistant sidebar
 
-**2.** Add [this repository](https://github.com/vas3k/lovelace-berlin-transport-card) as a custom repository (Three dots in top right corner -> Custom repositories)
+**2.** Add [this repository](https://github.com/manoth-msft/home-assistant-dashboard-card-bvg-vbb-departures) as a custom repository (Three dots in top right corner -> Custom repositories)
 
-**3.** Select "Lovelace" as a category
+**3.** Select "dashboard" as a category
 
-**4.** Go to `Settings -> Devices & Services -> Add integration` and search for this card name (just type `Berlin`)
+**4.** Go to `Settings -> Devices & Services -> Add integration` and search for this card name (just type `bvg`)
 
 **5.** Install it. Now you can add it to your dashboard
 
@@ -60,14 +62,13 @@ If you want to change any styles, font size or layout — the easiest way is to 
 
 ## ❤️ Contributions
 
-Contributions are welcome. Feel free to [open a PR](https://github.com/vas3k/lovelace-berlin-transport-card/pulls) and send it to review. If you are unsure, [open an Issue](https://github.com/vas3k/lovelace-berlin-transport-card/issues) and ask for advice.
+Contributions are welcome. Feel free to [open a PR](https://github.com/manoth-msft/home-assistant-dashboard-card-bvg-vbb-departures/pulls) and send it to review. If you are unsure, [open an Issue](https://github.com/manoth-msft/home-assistant-dashboard-card-bvg-vbb-departures/issues) and ask for advice.
 
 ## 🐛 Bug reports and feature requests
 
 Since this is my small hobby project, I cannot guarantee you a 100% support or any help with configuring your dashboards. I hope for your understanding.
 
-- **If you find a bug** - open [an Issue](https://github.com/vas3k/lovelace-berlin-transport-card/issues) and describe the exact steps to reproduce it. Attach screenshots, copy all logs and other details to help me find the problem.
-- **If you're missing a certain feature**, describe it in Issues and try to code it yourself. It's not hard. At the very least, you can try to [bribe me with a PayPal donation](https://www.paypal.com/paypalme/vas3kcom) to make the feature just for you :)
+- **If you find a bug** - open [an Issue](https://github.com/manoth-msft/home-assistant-dashboard-card-bvg-vbb-departures/issues) and describe the exact steps to reproduce it. Attach screenshots, copy all logs and other details to help me find the problem.
 
 ## 👮‍♀️ License
 

@@ -1,5 +1,7 @@
 {
-  "name": "Lovelace card for Berlin (BVG) and Brandenburg (VBB) integration",
+  "name": "Card for BVG/VBB real-time departures integration",
   "hide_default_branch": false,
-  "render_readme": true
+  "country": "DE",
+  "homeassistant": "2023.9.0",
+  "hacs": "1.0.0"
 }
