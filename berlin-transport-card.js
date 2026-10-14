@@ -1,5 +1,12 @@
 // Berlin Transport Card
 
+/* Values from sensor attributes (ultimately from the departures API) must never be rendered as markup */
+const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+}[c]));
+const safeColor = (value) => /^#[0-9a-fA-F]{3,8}$/.test(String(value ?? '')) ? value : 'transparent';
+const toNumber = (value) => Number.isFinite(Number(value)) ? Number(value) : 0;
+
 class BerlinTransportCard extends HTMLElement {
     constructor() {
         super();
@@ -26,29 +33,29 @@ class BerlinTransportCard extends HTMLElement {
         for (const entityId of entityIds) {
             const entity = hass.states[entityId];
             if (!entity) {
-                content += `<div class="not-found">Entity ${entityId} not found.</div>`;
+                content += `<div class="not-found">Entity ${escapeHtml(entityId)} not found.</div>`;
             }
             else {
                 if (showStopName) {
-                    content += `<div class="stop">${entity.attributes.friendly_name}</div>`;
+                    content += `<div class="stop">${escapeHtml(entity.attributes.friendly_name)}</div>`;
                 }
 
-                const timetable = entity.attributes.departures.slice(0, maxEntries).map((departure) => {
-                    const delay = departure.delay === null ? `` : departure.delay / 60;
+                const timetable = (entity.attributes.departures || []).slice(0, maxEntries).map((departure) => {
+                    const delay = departure.delay === null || departure.delay === undefined ? `` : toNumber(departure.delay) / 60;
                     const delayDiv = delay > 0 ? `<div class="delay delay-pos">+${delay}</div>`: `<div class="delay delay-neg">${delay === 0 ? '+0' : delay}</div>`;
                     const currentDate = new Date().getTime();
                     const timestamp = new Date(departure.timestamp).getTime();
-                    const walkingTime = includeWalkingTime ? departure.walking_time : 0;
+                    const walkingTime = includeWalkingTime ? toNumber(departure.walking_time) : 0;
                     const relativeTime = Math.round((timestamp - currentDate) / (1000 * 60)) - walkingTime;
                     const relativeTimeDiv = `<div class="relative-time">${relativeTime}&prime;&nbsp;</div>`;
 
                     return departure.cancelled && !showCancelled ? `` :
                         `<div class="departure ${departure.cancelled ? 'departure-cancelled' : ''}">
                             <div class="line">
-                                <div class="line-icon" style="background-color: ${departure.color}">${departure.line_name}</div>
+                                <div class="line-icon" style="background-color: ${safeColor(departure.color)}">${escapeHtml(departure.line_name)}</div>
                             </div>
-                            <div class="direction">${departure.direction}</div>
-                            <div class="time">${showRelativeTime ? relativeTimeDiv : ''}${showAbsoluteTime ? departure.time : ''}${showDelay ? delayDiv : ''}</div>
+                            <div class="direction">${escapeHtml(departure.direction)}</div>
+                            <div class="time">${showRelativeTime ? relativeTimeDiv : ''}${showAbsoluteTime ? escapeHtml(departure.time) : ''}${showDelay ? delayDiv : ''}</div>
                         </div>`
                 });
 
